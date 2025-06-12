@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para o amor da minha vida</title>
+  <style>
+    /* --- Estilos gerais --- */
+    body {
+      background: linear-gradient(to top left, #ffe6f0, #ccf2ff);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      background-color: white;
+      padding: 30px 20px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90vw;
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      color: #e91e63;
+      margin-bottom: 15px;
+      font-size: 1.6em;
+    }
+    p {
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.6;
+    }
+    .counter-text {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+    .counter {
+      font-size: 1.5em;
+      margin-top: 10px;
+      color: #e91e63;
+      font-weight: 600;
+    }
+
+    /* Foto */
+    .photo-container {
+      margin: 20px 0;
+    }
+    .photo-container img {
+      width: 180px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+    .photo-container img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Corações animados */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #e91e63;
+      transform: rotate(45deg);
+      animation: float 8s infinite ease-in;
+      opacity: 0.8;
+      bottom: 0;
+      border-radius: 3px;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #e91e63;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateX(0) rotate(45deg);
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(50px) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Para o amor de minha vida:</h2>
+
+    <div class="photo-container">
+      <img src="imagem/nois.jpeg" alt="Nossa foto juntos" />
+    </div>
+
+    <p>
+      Se eu pudesse escolher um lugar seguro, seria ao seu lado.<br>
+      Quanto mais tempo estou contigo, mais eu te amo.
+    </p>
+
+    <p class="counter-text">Meu amor por você começou há...</p>
+    <div class="counter" id="counter"></div>
+  </div>
+
+  <!-- Corações animados -->
+  <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 35%; animation-delay: 2s;"></div>
+  <div class="heart" style="left: 55%; animation-delay: 4s;"></div>
+  <div class="heart" style="left: 75%; animation-delay: 6s;"></div>
+
+  <script>
+    // Data de início do relacionamento
+    const startDate = new Date("2024-07-30T00:00:00"); // Ajuste a data aqui
+    const counter = document.getElementById("counter");
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      counter.textContent = `${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+  </script>
+</body>
+</html>
