@@ -1,0 +1,2 @@
+# amor
+pra meu amor
